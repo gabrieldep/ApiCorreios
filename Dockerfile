@@ -8,9 +8,9 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["ApiCorreios.csproj", "."]
-RUN dotnet restore ".\ApiCorreios.csproj"
+RUN dotnet restore "./ApiCorreios.csproj"
 COPY . .
-WORKDIR "\src\."
+WORKDIR "/src/."
 RUN dotnet build "ApiCorreios.csproj" -c Release -o /app/build
 
 FROM build AS publish
