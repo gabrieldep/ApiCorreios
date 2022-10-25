@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiCorreios", "ApiCorreios.csproj", "{CE19D64B-CA36-464D-ADBB-C5A93B4CA890}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE19D64B-CA36-464D-ADBB-C5A93B4CA890}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE19D64B-CA36-464D-ADBB-C5A93B4CA890}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE19D64B-CA36-464D-ADBB-C5A93B4CA890}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE19D64B-CA36-464D-ADBB-C5A93B4CA890}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7341D140-B781-4B9E-BBCD-41E3596A52B4}
+	EndGlobalSection
+EndGlobal
