@@ -1,5 +1,4 @@
 ﻿using DotNet.CEP.Search.App;
-using DotNet.CEP.Search.App.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
