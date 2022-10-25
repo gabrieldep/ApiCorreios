@@ -8,9 +8,9 @@ namespace ApiCorreios.Controllers
     [Route("[controller]")]
     public class CepController : ControllerBase
     {
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILogger<CepController> _logger;
 
-        public CepController(ILogger<WeatherForecastController> logger)
+        public CepController(ILogger<CepController> logger)
         {
             _logger = logger;
         }
