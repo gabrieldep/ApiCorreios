@@ -14,6 +14,6 @@ namespace DotNet.CEP.Search.App.Models
         public int Total { get; set; }
 
         [JsonProperty("dados")]
-        public Dados[]? Dados { get; set; }
+        public Dados[] Dados { get; set; }
     }
 }
