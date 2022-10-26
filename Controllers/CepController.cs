@@ -17,13 +17,13 @@ namespace ApiCorreios.Controllers
         }
 
         [HttpGet(Name = "GetAdress")]
-        public async Task<IActionResult> GetAsync(string cep, bool isRawData)
+        public async Task<IActionResult> GetAsync(string infoToSearch, bool isRawData)
         {
             var remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress?.ToString();
-            _logger.LogInformation($"Request from {remoteIpAddress}- CEP to search: {cep}");
+            _logger.LogInformation($"Request from {remoteIpAddress}- Info to search: {infoToSearch}");
 
             var cepSearch = new CepSearch();
-            var rawData = await cepSearch.GetAddressByCepRawDataAsync(cep);
+            var rawData = await cepSearch.GetAddressByCepRawDataAsync(infoToSearch);
             if (isRawData)
                 return StatusCode((int)HttpStatusCode.OK, rawData);
             return StatusCode((int)HttpStatusCode.OK, CepService.ProcessData(rawData));
