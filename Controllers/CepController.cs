@@ -17,13 +17,16 @@ namespace ApiCorreios.Controllers
         }
 
         [HttpGet(Name = "GetAdress")]
-        public async Task<IActionResult> GetAsync(string infoToSearch, bool isRawData)
+        public async Task<IActionResult> GetAsync(string cep, bool isRawData)
         {
-            var remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress?.ToString();
-            _logger.LogInformation($"Request from {remoteIpAddress}- Info to search: {infoToSearch}");
+            if (Request.Headers.TryGetValue("X-Forwarded-For", out var forwardedIps))
+            {
+                var senderIpv4 = forwardedIps.First();
+                _logger.LogInformation($"Request from {senderIpv4}- Info to search: {cep}");
+            }
 
             var cepSearch = new CepSearch();
-            var rawData = await cepSearch.GetAddressByCepRawDataAsync(infoToSearch);
+            var rawData = await cepSearch.GetAddressByCepRawDataAsync(cep);
             if (isRawData)
                 return StatusCode((int)HttpStatusCode.OK, rawData);
             return StatusCode((int)HttpStatusCode.OK, CepService.ProcessData(rawData));
