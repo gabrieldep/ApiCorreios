@@ -1,4 +1,5 @@
-﻿using ApiCorreios.Services;
+﻿using ApiCorreios.Models;
+using ApiCorreios.Services;
 using DotNet.CEP.Search.App;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -18,7 +19,7 @@ namespace ApiCorreios.Controllers
         }
 
         [HttpGet(Name = "GetAdress")]
-        public async Task<IActionResult> GetAsync(string cep, bool isRawData)
+        public async Task<IActionResult> GetAsync(string cep, bool isRawData, Enums.CepType? cepType)
         {
             if (Request.Headers.TryGetValue("X-Forwarded-For", out var forwardedIps))
             {
@@ -30,7 +31,9 @@ namespace ApiCorreios.Controllers
             var rawData = await cepSearch.GetAddressByCepRawDataAsync(cep);
             if (isRawData)
                 return StatusCode((int)HttpStatusCode.OK, rawData);
-            return StatusCode((int)HttpStatusCode.OK, CepService.ProcessData(rawData));
+            var processedData = CepService.ProcessData(rawData);
+            processedData = processedData.Where(p => cepType == null || p.CepType == cepType.ToString());
+            return StatusCode((int)HttpStatusCode.OK, processedData);
         }
     }
 }
