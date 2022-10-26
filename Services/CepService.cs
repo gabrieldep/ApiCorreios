@@ -47,11 +47,9 @@ namespace ApiCorreios.Services
                         CepType = Enums.CepType.Rua.ToString()
                     };
                 }
-
                 processedAddress.Add(address);
             }
             return processedAddress;
         }
-
     }
 }
