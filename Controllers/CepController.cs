@@ -20,6 +20,12 @@ namespace ApiCorreios.Controllers
         [HttpGet(Name = "GetAdress")]
         public async Task<IActionResult> GetAsync(string cep, bool isRawData)
         {
+            if (Request.Headers.TryGetValue("X-Forwarded-For", out var forwardedIps))
+            {
+                var senderIpv4 = forwardedIps.First();
+                _logger.LogInformation($"Request from {senderIpv4}");
+            }
+
             var cepSearch = new CepSearch();
             var rawData = await cepSearch.GetAddressByCepRawDataAsync(cep);
             _logger.LogInformation($"Info to search: {cep} \n Response: {JsonConvert.SerializeObject(rawData)}");
