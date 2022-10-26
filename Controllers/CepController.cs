@@ -19,7 +19,7 @@ namespace ApiCorreios.Controllers
         [HttpGet(Name = "GetAdress")]
         public async Task<IActionResult> GetAsync(string cep, bool isRawData)
         {
-            var remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;
+            var remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress?.ToString();
             _logger.LogInformation($"Request from {remoteIpAddress}- CEP to search: {cep}");
 
             var cepSearch = new CepSearch();
