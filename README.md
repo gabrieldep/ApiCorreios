@@ -11,6 +11,25 @@
 
 ## Documentation
 
+### Get list of address
+
+#### Request
+
+`GET /Cep/`
+
+    curl -i -H 'Accept: application/json' -d 'cep=Foo&isRawData=true' https://apicorreios.onrender.com/Cep
+
+#### Response
+
+    HTTP/1.1 200 OK
+    Date: Thu, 24 Feb 2011 12:36:30 GMT
+    Status: 200 OK
+    Connection: close
+    Content-Type: application/json
+    Content-Length: 2
+    
+    [{"rua":"foo","bairro":"foo","cidade":"foo","cep":"foo","uf":"foo","cepType":"Rua/Bairro/Cidade"}]
+    
 ## License
 
 * **Licensing for open source projects:**  
