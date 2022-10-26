@@ -17,7 +17,7 @@
 
 `GET /Cep/`
 
-    curl -i -H 'Accept: application/json' https://apicorreios.onrender.com/Cep?cep=30535065&isRawData=false
+    curl -i -H 'Accept: application/json' https://apicorreios.onrender.com/cep?cep=30535065&isRawData=false
 
 #### Response
 
