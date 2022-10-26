@@ -23,13 +23,11 @@ namespace ApiCorreios.Controllers
             if (Request.Headers.TryGetValue("X-Forwarded-For", out var forwardedIps))
             {
                 var senderIpv4 = forwardedIps.First();
-                _logger.LogInformation($"Request from {senderIpv4}");
+                _logger.LogInformation($"Request from {senderIpv4}- Info to search: {cep} ");
             }
 
             var cepSearch = new CepSearch();
             var rawData = await cepSearch.GetAddressByCepRawDataAsync(cep);
-            _logger.LogInformation($"Info to search: {cep} \n Response: {JsonConvert.SerializeObject(rawData)}");
-
             if (isRawData)
                 return StatusCode((int)HttpStatusCode.OK, rawData);
             return StatusCode((int)HttpStatusCode.OK, CepService.ProcessData(rawData));
